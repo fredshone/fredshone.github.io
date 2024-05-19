@@ -131,10 +131,6 @@ blog_nav_title: perplexing # blog_nav_title will be displayed in the navigation 
 blog_description:
 permalink: /blog/:year/:title/
 
-external_sources:
-  - name: medium.com  # name of the source (arbitrary string)
-    rss_url: https://medium.com/@fredjshone/feed
-  
 # Pagination
 pagination:
   enabled: true
@@ -167,7 +163,7 @@ disqus_shortname: al-folio # put your disqus shortname
 # you can display them in your blog by adding a link to the RSS feed.
 external_sources:
   - name: medium.com
-    rss_url: https://medium.com/@al-folio/feed
+    rss_url: https://medium.com/@fredjshone/feed
 
 # -----------------------------------------------------------------------------
 # Collections
