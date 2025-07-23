@@ -21,7 +21,7 @@ social: true  # includes social icons at the bottom of the page
 
 👷🏻 I like to build things. I am the author of [pam](https://github.com/arup-group/pam) - a python library for activity-based model development. Pam is published in [JOSS](https://joss.theoj.org/papers/10.21105/joss.06097). Pam was originally built to help transport modellers respond to the pandemic ([medium](https://medium.com/arupcitymodelling/pandemic-activity-modifier-intro-3d2dccbc716e)) ([youtube](https://www.youtube.com/watch?v=F3MLi96aisY)).
 
-🚂 I've also build [mc](https://github.com/arup-group/mc) and [elara](https://github.com/arup-group/elara) to help people use (the infamous) [MATSim](https://www.matsim.org/). Check out my [github](https://github.com/fredshone) for current projects.
+🚂 I've also built [mc](https://github.com/arup-group/mc) and [elara](https://github.com/arup-group/elara) to help people use (the infamous) [MATSim](https://www.matsim.org/). Check out my [github](https://github.com/fredshone) for current projects.
 
 🤟🏻 I'm very proudly the former Technical Lead for Arup's [City Modelling Lab (CML)](https://www.arup.com/services/digital/city-modelling-lab). Read about their exploits [here](https://medium.com/arupcitymodelling).
 
