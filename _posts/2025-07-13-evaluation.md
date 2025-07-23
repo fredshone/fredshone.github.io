@@ -25,7 +25,7 @@ We evaluate our model/device/thing to convince ourselves, plus some reviewers an
 
 # Evaluation in Machine Learning
 
-_*For the ML congregation, the train, validate, test divide is sacrosanct, and benchmarking tasks are plentiful.*_
+***For the ML congregation, the train, validate, test divide is sacrosanct, and benchmarking tasks are plentiful.***
 
 Some research whittles away at evaluation benchmarks so entrenched and emblematic of progress that tiny fractions of progress grant canonisation. These highly reproducible evaluation frameworks are at least partially responsible for the rapid ascendancy of ML.
 
@@ -37,7 +37,7 @@ Most recently, model capabilities have ascended past human experts and saturated
 
 ## Evaluation Elsewhere
 
-_*Before ML, there was the Age of Statistics.*_
+***Before ML, there was the Age of Statistics.***
 
 The statisticians of the time, without much data or compute, built models upon structures of knowns, in which the capacity to learn was carefully rationed and controlled. Parameters were few, unknown ones especially, and so capacity was limited and tasks simplified. Without much data to go around, nothing was withheld and the evaluation of a model was more an evaluation of the modeller, about what they knew or could do, rather than what the model could do. But this wasn't a problem, because back then you could look at a model, see it all, and more or less understand it and know that it was good.
 
@@ -45,26 +45,26 @@ Having a little model that you can truly understand is reasonably sufficient gro
 
 ## Generative Modelling
 
-_*Enter generative AI, the amalgamation of probabilistic modelling and deep machine learning.*_
+***Enter generative AI, the amalgamation of probabilistic modelling and deep machine learning.***
 
-A potent combination of uncertainty and opacity. In its purest case, a generative model aims to learn the distribution of some observed data sample. This data and distribution might be images of cats, or 18th-century poetry, or for me, people and their choices. But we'll just call the distributions $P(X)$.
+A potent combination of uncertainty and opacity. In its purest case, a generative model aims to learn the distribution of some observed data sample. This data and distribution might be images of cats, or 18th-century poetry, or for me, people and their choices. But we'll just call the distributions $$ P(X) $$.
 
-Once you've learnt $P(X)$, you can generate new samples from it. As well as access to a near-infinite diversity of cat images, generating new samples allows us to surrogate processes that are either too complex or unknown to be otherwise simulated. Like a chat with a human.
+Once you've learnt $$ P(X) $$, you can generate new samples from it. As well as access to a near-infinite diversity of cat images, generating new samples allows us to surrogate processes that are either too complex or unknown to be otherwise simulated. Like a chat with a human.
 
-Generative modellers are also working with big, complex distributions. The possible space of all possible cat images, for example, is massive. Consider an image size of N pixels, each pixel has three channels (RGB) with 256 possible values. This forms a joint distribution of pixel channel values, with $256^{3*N}$ possible images.
+Generative modellers are also working with big, complex distributions. The possible space of all possible cat images, for example, is massive. Consider an image size of N pixels, each pixel has three channels (RGB) with 256 possible values. This forms a joint distribution of pixel channel values, with $$ 256^{3*N} $$ possible images.
 
 ## Generative Evaluation
 
-When we tackle a purely generative problem, we have *some* data from $X$ and use this to model $P(X)$. Skipping forward a bit, we've finished training our model and we want to evaluate it. But where is our test split? Can we even make one? Consider the beloved (my words) Variation Auto-Encoder (VAE) that (after some fiddling) provides a mapping between a random latent prior $P(Z) ~ N(0,1)$ and our desired distribution $P(X)$, such that when we want a new cat image, poem or person, we randomly sample a $z$, pass it through the model, and out pops a brand new cat image, poem or person. We can test some mechanisms of the model, but ultimately, the evaluated case needs to capture this generative process, which is always out of scope of the training data, because its input is a random sample from $Z$.
+When we tackle a purely generative problem, we have *some* data from $X$ and use this to model $$ P(X) $$. Skipping forward a bit, we've finished training our model and we want to evaluate it. But where is our test split? Can we even make one? Consider the beloved (my words) Variation Auto-Encoder (VAE) that (after some fiddling) provides a mapping between a random latent prior $$ P(Z) ~ N(0,1) $$ and our desired distribution $$ P(X) $$, such that when we want a new cat image, poem or person, we randomly sample a $z$, pass it through the model, and out pops a brand new cat image, poem or person. We can test some mechanisms of the model, but ultimately, the evaluated case needs to capture this generative process, which is always out of scope of the training data, because its input is a random sample from $Z$.
 
 ---
 **NOTE**
 
-Most generative models actually use some form of conditionality. The big boys, image and text generation models, are typically text prompted, for example. But usually there is at least some generative or probabilistic process remaining. For example, they learn $P(X|Y)$.
+Most generative models actually use some form of conditionality. The big boys, image and text generation models, are typically text prompted, for example. But usually there is at least some generative or probabilistic process remaining. For example, they learn $$ P(X|Y) $$.
 
 ---
 
-**New recipe then. We do *density estimation*.**
+***New recipe then. Density estimation.***
 
 Step one. We claim we have a dataset worthy of all real cat images. Nobody will say otherwise; the data is fine. Step two. We measure out a large number of generated cat images from our model. Step three. Mash the real cat images into a probability distribution. Step four. Mash the synthetic images into a probability distribution. Final step. Do they look similar? Yes? Great! You have made a delicious generative model. No? Relax! Try re-mashing harder.
 
