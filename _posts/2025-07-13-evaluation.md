@@ -47,20 +47,20 @@ Having a little model that you can truly understand is reasonably sufficient gro
 
 ***Enter generative AI, the amalgamation of probabilistic modelling and deep machine learning.***
 
-A potent combination of uncertainty and opacity. In its purest case, a generative model aims to learn the distribution of some observed data sample. This data and distribution might be images of cats, or 18th-century poetry, or for me, people and their choices. But we'll just call the distributions $ P(X) $.
+A potent combination of uncertainty and opacity. In its purest case, a generative model aims to learn the distribution of some observed data sample. This data and distribution might be images of cats, or 18th-century poetry, or for me, people and their choices. But we'll just call the distributions \(P(X)\).
 
-Once you've learnt $ P(X) $, you can generate new samples from it. As well as access to a near-infinite diversity of cat images, generating new samples allows us to surrogate processes that are either too complex or unknown to be otherwise simulated. Like a chat with a human.
+Once you've learnt \(P(X)\), you can generate new samples from it. As well as access to a near-infinite diversity of cat images, generating new samples allows us to surrogate processes that are either too complex or unknown to be otherwise simulated. Like a chat with a human.
 
-Generative modellers are also working with big, complex distributions. The possible space of all possible cat images, for example, is massive. Consider an image size of N pixels, each pixel has three channels (RGB) with 256 possible values. This forms a joint distribution of pixel channel values, with $ 256^{3*N} $ possible images.
+Generative modellers are also working with big, complex distributions. The possible space of all possible cat images, for example, is massive. Consider an image size of N pixels, each pixel has three channels (RGB) with 256 possible values. This forms a joint distribution of pixel channel values, with \(256^{3*N}\) possible images.
 
 ## Generative Evaluation
 
-When we tackle a purely generative problem, we have *some* data from $X$ and use this to model $ P(X) $. Skipping forward a bit, we've finished training our model and we want to evaluate it. But where is our test split? Can we even make one? Consider the beloved (my words) Variation Auto-Encoder (VAE) that (after some fiddling) provides a mapping between a random latent prior $ P(Z) ~ N(0,1) $ and our desired distribution $ P(X) $, such that when we want a new cat image, poem or person, we randomly sample a $z$, pass it through the model, and out pops a brand new cat image, poem or person. We can test some mechanisms of the model, but ultimately, the evaluated case needs to capture this generative process, which is always out of scope of the training data, because its input is a random sample from $Z$.
+When we tackle a purely generative problem, we have *some* data from \(X\) and use this to model \(P(X)\). Skipping forward a bit, we've finished training our model and we want to evaluate it. But where is our test split? Can we even make one? Consider the beloved (my words) Variation Auto-Encoder (VAE) that (after some fiddling) provides a mapping between a random latent prior \(P(Z) ~ N(0,1)\) and our desired distribution \( P(X) \), such that when we want a new cat image, poem or person, we randomly sample a \(z\), pass it through the model, and out pops a brand new cat image, poem or person. We can test some mechanisms of the model, but ultimately, the evaluated case needs to capture this generative process, which is always out of scope of the training data, because its input is a random sample from \(Z\).
 
 ---
 **NOTE**
 
-Most generative models actually use some form of conditionality. The big boys, image and text generation models, are typically text prompted, for example. But usually there is at least some generative or probabilistic process remaining. For example, they learn $ P(X|Y) $.
+Most generative models actually use some form of conditionality. The big boys, image and text generation models, are typically text prompted, for example. But usually there is at least some generative or probabilistic process remaining. For example, they learn \( P(X|Y) \).
 
 ---
 
@@ -70,7 +70,7 @@ Step one. We claim we have a dataset worthy of all real cat images. Nobody will 
 
 The sticking point is that estimating probability distributions from a finite number of samples, sprinkled across a very large, complex and unknown distribution, is somewhere between really difficult, infeasible and impossible. Upon minor reflection, this was in fact the whole point of generative modelling. We want to fill in those gaps in the data, because we don't know them. But because we don't know them, we are now going to struggle to evaluate the quality of our filling.
 
-We could withhold a sprinkling of real data as a test set, but it won't be useful in the great expanse of possible $X$ cat images.
+We could withhold a sprinkling of real data as a test set, but it won't be useful in the great expanse of possible \(X\) cat images.
 
 ## Quality vs Diversity
 
