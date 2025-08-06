@@ -60,7 +60,7 @@ When we tackle a purely generative problem, we have *some* data from $$X$$ and u
 ---
 **NOTE**
 
-Most generative models actually use some form of conditionality. The big boys, image and text generation models, are typically text prompted, for example. But usually there is at least some generative or probabilistic process remaining. For example, they learn $$P(X|Y)$$.
+Most generative models actually use some form of conditionality. The big boys, image and text generation models, are typically text prompted, for example. But usually there is at least some generative or probabilistic process remaining. For example, they learn $$P(X \mid Y)$$.
 
 ---
 
@@ -70,7 +70,7 @@ Step one. We claim we have a dataset worthy of all real cat images. Nobody will 
 
 The sticking point is that estimating probability distributions from a finite number of samples, sprinkled across a very large, complex and unknown distribution, is somewhere between really difficult, infeasible and impossible. Upon minor reflection, this was in fact the whole point of generative modelling. We want to fill in those gaps in the data, because we don't know them. But because we don't know them, we are now going to struggle to evaluate the quality of our filling.
 
-We could withhold a sprinkling of real data as a test set, but it won't be useful in the great expanse of possible $$|X|$$ cat images.
+We could withhold a sprinkling of real data as a test set, but it won't be useful in the great expanse of possible $$\mid X \mid$$ cat images.
 
 ## Quality vs Diversity
 
