@@ -2,27 +2,43 @@
 layout: about
 title: about
 permalink: /
-subtitle: <b> Building tools for a better future. PhD student. London.</b>
+subtitle: >
+  <b>Applied human systems modelling — transport, behaviour, generative ML.</b> London.
 
 profile:
   align: right
-  image: me_head.jpg
-  image_circular: false # crops the image to make it circular
+  image: prof_pic.jpg
+  image_circular: false
 
-news: false  # includes a list of news items
-latest_posts: false  # includes a list of the newest posts
-selected_papers: false # includes a list of papers marked as "selected={true}"
-social: true  # includes social icons at the bottom of the page
+news: false
+latest_posts: true
+selected_papers: true
+social: true
 ---
 
-🎒 I'm at **UCL**'s Behaviour & Infrastructure Group ([BIG](https://www.ucl.ac.uk/civil-environmental-geomatic-engineering/research/groups-centres-and-sections/behaviour-infrastructure-group)). I'm working on tools for helping humanity make better infrastructure and policy decisions. Technically I'm using **Generative Models** and **Reinforcement Learning** to model millions of **perfectly imperfect** people. In practice, I'm enabling modelling of **complex human systems** - such as for an efficient and fair transition to electric vehicles.
+I build tools for understanding and shaping complex human systems. My work sits at the
+intersection of transport modelling, generative machine learning, and activity-based
+simulation — translating novel research into software that practitioners actually use.
 
-🤙🏻 I'm open to temporary and part-time work ([cv](/assets/pdf/FShone.pdf)) ([email me](mailto:fredjshone@gmail.com)). 
+Most recently I was Technical Lead of [Arup's City Modelling Lab (CML)](https://www.arup.com/services/digital/city-modelling-lab),
+a specialist team advancing large-scale transport and urban modelling. I led the design
+and delivery of open-source modelling infrastructure used across Arup's global practice.
+Read about the team's work on the [CML blog](https://medium.com/arupcitymodelling).
 
-👷🏻 I like to build things. I am the author of [pam](https://github.com/arup-group/pam) - a python library for activity-based model development. Pam is published in [JOSS](https://joss.theoj.org/papers/10.21105/joss.06097). Pam was originally built to help transport modellers respond to the pandemic ([medium](https://medium.com/arupcitymodelling/pandemic-activity-modifier-intro-3d2dccbc716e)) ([youtube](https://www.youtube.com/watch?v=F3MLi96aisY)).
+I am completing my PhD at [UCL's Behaviour & Infrastructure Group (BIG)](https://www.ucl.ac.uk/civil-environmental-geomatic-engineering/research/groups-centres-and-sections/behaviour-infrastructure-group),
+where my research applies deep generative models to synthesise realistic human activity
+schedules — the behavioural building blocks of transport, energy, and epidemiology models.
+My [2025 paper in Transportation Research Part C](https://doi.org/10.1016/j.trc.2025.105273)
+presents a significantly faster and more flexible approach to schedule synthesis than
+existing methods.
 
-🚂 I've also built [mc](https://github.com/arup-group/mc) and [elara](https://github.com/arup-group/elara) to help people use (the infamous) [MATSim](https://www.matsim.org/). Check out my [github](https://github.com/fredshone) for current projects.
+I am the author of [pam](https://github.com/arup-group/pam), a Python library for
+population activity modelling published in the [Journal of Open Source Software](https://joss.theoj.org/papers/10.21105/joss.06097).
+I have also built [mc](https://github.com/arup-group/mc) and [elara](https://github.com/arup-group/elara)
+to support large-scale MATSim modelling workflows.
 
-🤟🏻 I'm very proudly the former Technical Lead for Arup's [City Modelling Lab (CML)](https://www.arup.com/services/digital/city-modelling-lab). Read about their exploits [here](https://medium.com/arupcitymodelling).
+I am available for senior roles, consulting, and research collaboration in transport
+modelling, applied ML, and urban systems. [Get in touch](mailto:fredjshone@gmail.com)
+or [view my CV](/assets/pdf/FShone.pdf).
 
-🌱 Still reading? Thanks! This site is a place for me to find work, but also keep my sanity (academia is a strange place to be) through (i) connecting with people and (ii) keeping a record of what I'm doing. I like to climb, play ultimate and talk about plants.
+Outside work I climb, play ultimate frisbee, and tend to too many houseplants.
