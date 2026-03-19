@@ -7,7 +7,7 @@ subtitle: >
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: mug_bw.jpeg
   image_circular: false
 
 news: false
@@ -30,15 +30,15 @@ where my research applies deep generative models to synthesise realistic human a
 schedules — the behavioural building blocks of transport, energy, and epidemiology models.
 My [2025 paper in Transportation Research Part C](https://doi.org/10.1016/j.trc.2025.105273)
 presents a significantly faster and more flexible approach to schedule synthesis than
-existing methods.
+existing methods. My next work, ActVAE, is [on the way](https://arxiv.org/abs/2512.04223).
 
 I am the author of [pam](https://github.com/arup-group/pam), a Python library for
 population activity modelling published in the [Journal of Open Source Software](https://joss.theoj.org/papers/10.21105/joss.06097).
 I have also built [mc](https://github.com/arup-group/mc) and [elara](https://github.com/arup-group/elara)
-to support large-scale MATSim modelling workflows.
+to support serious MATSim modelling workflows. I am currently working on [robin](https://github.com/fredshone/robin) and [caveat](https://github.com/big-ucl/caveat/tree/main/caveat), projects for population and activity schedule synthesis. I am currently starting to assemble an evaluation frameowrk starting with [acteval](https://github.com/fredshone/robin).
 
 I am available for senior roles, consulting, and research collaboration in transport
-modelling, applied ML, and urban systems. [Get in touch](mailto:fredjshone@gmail.com)
+modelling, simulation, applied ML, and building stuff. [Get in touch](mailto:fredjshone@gmail.com)
 or [view my CV](/assets/pdf/FShone.pdf).
 
-Outside work I climb, play ultimate frisbee, and tend to too many houseplants.
+I also climb, play ultimate, and make things.
