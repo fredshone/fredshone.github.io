@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Human articicial intelligence
-date: 2026-03-03
+date: 2026-03-20
 description: Tangential: superhuman AI and why it won't help us understand people
 tags: ML, LLM
 categories: Dev
@@ -15,13 +15,13 @@ toc:
 
 ---
 
-This post is simply make the point that the hunt for super-general-intelligence (SGI) is tangential to what we need for modelling humans and probably systems of humans.
+This post is to simply make the point that the hunt for super-general-intelligence (SGI) is tangential to what we need for modelling humans and probably systems of humans.
 
 # What is intelligence?
 
 Psychologists, biologists, and computer scientists have been arguing about the definition of intelligence for some time.
 
-My first unastonishing take, is that checking the length of a tape-measure with the same tape-measure is probematic. Humans defining a thing, using that thing is self-referential or circular. 
+My first, unastonishing take, is that checking the length of a tape-measure with the same tape-measure is probematic. Humans defining a thing, using that thing is self-referential or circular. 
 
 You can escape this loop with an evolutionary inspired take on intelligence. Broadly, intelligence isn't an abstract universal property. Instead it's fitness-for-purpose for context.
 
