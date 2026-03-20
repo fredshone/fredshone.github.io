@@ -7,8 +7,6 @@ tags: ML, LLM
 categories: Dev
 giscus_comments: false
 related_posts: false
-toc:
-  sidebar: left
 ---
 
 *What to make of the drive for superhuman intelligence regarding the problem of modelling humans?*
