@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: distill
 title: Human articicial intelligence
 date: 2026-03-20
 description: Tangential: superhuman AI and why it won't help us understand people
