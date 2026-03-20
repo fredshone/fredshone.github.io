@@ -63,3 +63,4 @@ Now try to apply this to human behaviour modelling. We have utility theory to ma
 
 Even when we can specify one, like *get to work on-time!*, we would not want to optimise for it. The whole point is to predict what real, flawed, inconsistent humans will actually do — not what perfectly rational agents would do. We want the person who drives to the gym and takes the lift. We want the commuter who takes the slow train on a sunny day. Super-human performance is the goal for language models. For human behaviour models, it would be a catastrophic failure mode.
 
+

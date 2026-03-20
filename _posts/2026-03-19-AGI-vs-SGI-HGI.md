@@ -1,5 +1,5 @@
 ---
-layout: distill
+layout: post
 title: Human articicial intelligence
 date: 2026-03-20
 description: Tangential: superhuman AI and why it won't help us understand people
@@ -7,6 +7,8 @@ tags: ML, LLM
 categories: Dev
 giscus_comments: false
 related_posts: false
+toc:
+    sidebar: left
 ---
 
 *What to make of the drive for superhuman intelligence regarding the problem of modelling humans?*
@@ -41,6 +43,17 @@ These are precisely the environments where humans are weakest — combinatorial,
 
 # How to be human
 
-The human workday doesn't have a clean reward function. We use heuristics, habits, identity, shortcuts, and instinct. Our "objectives" operate on timescales from seconds to decades simultaneously, and they conflict with each other constantly. The reasons we give for our choices are often retrospective. We often can't be trusted to knwo why we did something at all<d-footnote>see [choice blindness](https://pmc.ncbi.nlm.nih.gov/articles/PMC4172758/)</d-footnote>. 
+The human workday doesn't have a clean reward function. We use heuristics, habits, identity, shortcuts, and instinct. Our "objectives" operate on timescales from seconds to decades simultaneously, and they conflict with each other constantly. The reasons we give for our choices are often retrospective. We often can't be trusted to knwo why we did something at all[1]. 
 
-This is a tricky reward (or utility<d-footnote>There are some parallels between RL and classic behavioural based choice models. But they are out of scope here. Simply we can say that they are also optimisers and that this is also problematic.</d-footnote>) function to devise, and certainly not what sits at the heart of LLMs and other models on their way to SGI<d-footnote>We could still perhaps spin of our own SGI (Sh*t General Intelligence)</d-footnote>. Instead I suggest we simply imitate the pattern. Absorb the mess and reflect it back without needing to reduce it to a clean objective<d-footnote>This argumant is heavilly reliant on the assumption that we model humans as agent that interact to simulate collective behaviours. Rather than simply cut the corner and model the collective sytem directly, for example. Such a system would certainy need to be superhuman and I don't have much time for it because (i) such complexity seems intractible, and (ii) how to trust a system that one-shots the future without showing us any working?</d-footnote>.
+This is a tricky reward (or utility[2]) function to devise, and certainly not what sits at the heart of LLMs and other models on their way to SGI[3]. Instead I suggest we simply imitate the pattern. Absorb the mess and reflect it back without needing to reduce it to a clean objective[4].
+
+___
+
+[1] See [choice blindness](https://pmc.ncbi.nlm.nih.gov/articles/PMC4172758/)
+
+[2] There are some parallels between RL and classic behavioural based choice models. But they are out of scope here. Simply we can say that utility based approaches are also optimisers and that this is also problematic.
+
+[3] We could still perhaps spin of our own SGI (Sh*t General Intelligence)
+
+[4] This argumant is heavilly reliant on the assumption that we model humans as agent that interact to simulate collective behaviours. Rather than simply cut the corner and model the collective sytem directly, for example. Such a system would certainy need to be superhuman and I don't have much time for it because (i) such complexity seems intractible, and (ii) how to trust a system that one-shots the future without showing us any working?
+
