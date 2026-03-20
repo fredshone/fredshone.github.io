@@ -2,7 +2,7 @@
 layout: post
 title: Human articicial intelligence
 date: 2026-03-19
-description: Tangential: superhuman AI and why it won't help us understand people
+description: "Tangential: superhuman AI and why it won't help us understand people"
 tags: ML, LLM
 categories: Dev
 giscus_comments: false
