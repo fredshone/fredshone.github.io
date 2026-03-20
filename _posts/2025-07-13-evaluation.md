@@ -23,7 +23,7 @@ The mention of *evaluation* can be followed by an immediate mental slide into so
 
 We evaluate our model/device/thing to convince ourselves, plus some reviewers and all other interested parties, that our thing is good. Specifically, that it is good, or fit, for some specific purpose or application. Maybe it predicts the future. Maybe it can tell a dog from a cat. Or maybe it's for zesting lemons. The important point, obviously but easily forgotten, is that our evaluation needs to demonstrate fitness for that purpose. It should simulate the real intended use of our model/device/thing as closely as possible.
 
-# Evaluation in Machine Learning
+# Evaluation in machine learning
 
 ***For the ML congregation, the train, validate, test divide is sacrosanct, and benchmarking tasks are plentiful.***
 
@@ -35,7 +35,7 @@ So you follow the lore, you split your data and evaluate. But still, people look
 
 Most recently, model capabilities have ascended past human experts and saturated the classic benchmarks. We now train models to undertake more complex and difficult tasks. It's increasingly not so obvious or easy to evaluate such requirements. Some complex tasks, like mathematical proofs or coding, are intrinsically verifiable, but others are not. How to evaluate whether customers are happy with your bot or if your Ghibli-style self-portrait is any good?
 
-## Evaluation Elsewhere
+## Evaluation elsewhere
 
 ***Before ML, there was the Age of Statistics.***
 
@@ -43,7 +43,7 @@ The statisticians of the time, without much data or compute, built models upon s
 
 Having a little model that you can truly understand is reasonably sufficient grounds for good evaluation. But little models can't do difficult tasks, and so we sometimes stack them up. Human behaviour is a nice example. Pick a simple choice - *should I travel to work by car or by bike?* - find some data, specify a little model, train it, maybe test it. Looks fine. Add some complexity - *should I also go shopping today?* No problem. Stick another model on. But then, *what time should I leave the house? Isn't tonight bowling night?* and so on. Quickly, we have a very complicated collection of simple models, which we don't truly understand, and we're not sure how well we truly evaluated it/them.
 
-## Generative Modelling
+## Generative modelling
 
 ***Enter generative AI, the amalgamation of probabilistic modelling and deep machine learning.***
 
@@ -53,7 +53,7 @@ Once you've learnt $$P(X)$$, you can generate new samples from it. As well as ac
 
 Generative modellers are also working with big, complex distributions. The possible space of all possible cat images, for example, is massive. Consider an image size of N pixels, each pixel has three channels (RGB) with 256 possible values. This forms a joint distribution of pixel channel values, with $$256^{3N}$$ possible images.
 
-## Generative Evaluation
+## Generative evaluation
 
 When we tackle a purely generative problem, we have *some* data from $$X$$ and use this to model $$P(X)$$. Skipping forward a bit, we've finished training our model and we want to evaluate it. But where is our test split? Can we even make one? Consider the beloved (my words) Variation Auto-Encoder (VAE) that (after some fiddling) provides a mapping between a random latent prior $$P(Z) \sim N(0,I)$$ and our desired distribution $$P(X)$$, such that when we want a new cat image, poem or person, we randomly sample a $$z$$, pass it through the model, and out pops a brand new cat image, poem or person. We can test some mechanisms of the model, but ultimately, the evaluated case needs to capture this generative process, which is always out of scope of the training data, because its input is a random sample from $$Z$$.
 
@@ -72,7 +72,7 @@ The sticking point is that estimating probability distributions from a finite nu
 
 We could withhold a sprinkling of real data as a test set, but it won't be useful in the great expanse of possible $$\mid X \mid$$ cat images.
 
-## Quality vs Diversity
+## Quality vs diversity
 
 Nobody is perfect. But if we were perfect, at density estimation, then we would expect our generated samples to be both realistic individually and in aggregate. For example, we would expect our cat images to individually look like cats, and collectively, to span the full diversity of possible cats.
 
@@ -80,6 +80,6 @@ But we are not perfect and wouldn't even know if we were because we don't know w
 
 It is probably easier to evaluate individual quality in more cases. You can just have another model count fingers or even pay a human to give the thumbs up or down. Plus, individual quality is more of a priority in many applications. Why train a bot to speak the truth when you can just have it be agreeable? Just please don't be Mecha Hitler. As such, there has been a shift towards evaluating quality over diversity.
 
-# Final Thoughts
+# Final thoughts
 
 But generative diversity really matters sometimes. My work generates human choices, specifically the actions we take and when, over the course of a day. These vary both from person to person and for the same person, from day to day. Sometimes I go for drinks after work, sometimes I sit at home all day watching brain rot. To usefully and fairly model the real world, I want to model this diversity and I want to model it correctly. 

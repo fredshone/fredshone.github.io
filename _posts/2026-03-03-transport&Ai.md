@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Unreasonable Difficulty of Modelling Reasonable People
+title: The unreasonable difficulty of modelling reasonable people
 date: 2026-03-03
 description: parallels between modelling language and modelling people
 tags: ML, LLM
@@ -15,13 +15,13 @@ toc:
 
 ---
 
-# A Brief History of Making Things Up
+# A brief history of making things up
 
 Forty years ago, language modelling was pretty theoretical. Linguists and statisticians, working with limited data and hard-won assumptions about the structure of language, strived and mostly failed to generate realistic language (certainly compared to the state of the art today). Models were tidy, interpretable, and [quite bad at language](https://sites.google.com/view/elizaarchaeology/try-eliza).
 
 Modern data-driven approaches didn't just improve language models — they *replaced* them. Transport modelling, and human behavioural modelling more generally, finds itself roughly where language modelling was forty years ago.
 
-# The Transport Modeller's Predicament
+# The transport modeller's predicament
 
 ***We have a lot of structure and not enough data.***
 
@@ -33,7 +33,7 @@ So why not follow language modelling's lead and throw data at the problem? The e
 
 So transport modellers occupy an awkward middle ground. Not enough data to go fully empirical. Too much complexity to stay fully theoretical.
 
-# An Opportunity
+# An opportunity
 
 Thanks to an apparent disregard for intellectual property, trademarks, and even personal privacy — perhaps irresponsibility — language models represent the outer limits of what is possible. But more efficient, safe, and sensible data-driven approaches certainly exist. See my previous love letter to [VAEs](https://arxiv.org/abs/1906.02691).
 
@@ -41,7 +41,7 @@ LLMs have also shown us the value of scale. They generalise to new situations us
 
 Perhaps we can then imagine a transport model that works anywhere, at any time, and for any scenario required. We could have a model that predicts human choices, whether in a rural town in the US or a European city, in the near or far future, for scenarios ranging across domains and applications.
 
-# The Fundamental Problem
+# The fundamental problem
 
 ***Should a transport model hallucinate?***
 
@@ -51,9 +51,9 @@ I'm going to argue that being incorrect — or hallucinating, if you prefer — 
 
 The latter problem, however — representing the diverse and often unexpected range of human decision-making — matters. LLMs are increasingly being shown to [homogenise](https://arxiv.org/html/2504.05228v1) towards the most common outputs; mode collapse on a grand scale, perhaps. Not everyone should buy a car, get an office job, and work nine to five in our models. Someone has to buy a bike, open a bookshop, and get into D&D. Someone also has to fall out with the police and head to Spain. Diversity is important.
 
-# The RL Problem
+# The RL problem
 
-***Reinforcement learning broke language models open. It will probably not save us.***
+***Reinforcement learning broke language models open. It will probably not be so useful for us.***
 
 The leap from "impressive autocomplete" to something disturbingly competent is substantially the product of [reinforcement learning from human feedback](https://arxiv.org/abs/2203.02155) (Ouyang et al., 2022): train the model to produce outputs humans prefer, penalise the bad ones, let it optimise. This works because there exists a coherent notion of a *good* answer.
 

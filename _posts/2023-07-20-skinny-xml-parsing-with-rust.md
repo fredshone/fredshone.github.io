@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Overthinking a Skinny XML Parser with Rust
+title: Overthinking a skinny XML parser with rust
 date: 2023-07-20 10:14:00-0400
 description: a Rust parser for MATSim network format
 tags: MATSim Rust parsing xml
