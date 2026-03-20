@@ -7,7 +7,7 @@ subtitle: >
 
 profile:
   align: right
-  image: mug_bw.jpeg
+  image: profile.jpg
   image_circular: false
 
 news: false
