@@ -1,5 +1,5 @@
 ---
-layout: distill
+layout: post
 title: Measuring the Distance Between Activity Populations
 description: >
   A walkthrough of acteval's semantic distance pipeline: how to extract
@@ -7,18 +7,12 @@ description: >
   Distance between populations, and aggregate the results into interpretable
   domain scores.
 date: 2026-03-29
-authors:
-  - name: Your Name
-    affiliations:
-      name: Your Institution
-bibliography: acteval.bib
+tags: acteval, transport, evaluation
+categories: Dev
+giscus_comments: false
+related_posts: false
 toc:
-  - name: What are activity sequences?
-  - name: Why measure similarity?
-  - name: Extracting features
-  - name: Calculating distances
-  - name: Aggregating to group and domain
-  - name: Splitting by attributes
+  sidebar: left
 ---
 
 ## Acteval
@@ -63,10 +57,7 @@ plot.gantt(
 )
 ```
 
-<div class="l-body">
-  {% include figure.html path="assets/img/acteval/sample-gantt.svg"
-     caption="Example activiy schedule." %}
-</div>
+{% include figure.liquid path="assets/img/acteval/sample-gantt.svg" caption="Example activity schedule." %}
 
 Times are typically minutes from midnight but for now any consistent unit works; the library normalises internally.
 
@@ -85,10 +76,7 @@ plot.gantt(populations={"A": A}, act_colors=ACTS, acts=ACTS.keys())
 
 ```
 
-<div class="l-body">
-  {% include figure.html path="assets/img/acteval/samples-gantt.svg"
-     caption="Example activiy schedule." %}
-</div>
+{% include figure.liquid path="assets/img/acteval/samples-gantt.svg" caption="Example activity schedule." %}
 
 We can think of these populations as really big complex distributions, with mixtures of discrete and continuous dimensions. Vast swathes of this theorized disribution are empty (no one *should* flip-flop hundreds of times between work and home in a day) and some are quite dense (like the classic home-work-home sequence).
 
@@ -143,10 +131,7 @@ _ = plot.sequence_lengths({"A": A})
 
 ```
 
-<div class="l-body">
-  {% include figure.html path="assets/img/acteval/fig2-sequence-lengths.svg"
-     caption="Example population feature distributions." %}
-</div>
+{% include figure.liquid path="assets/img/acteval/fig2-sequence-lengths.svg" caption="Example population feature distributions." %}
 
 Note that `sequence_lengths_per_pid` returns a `PidFeatures` object. We then use `aggregate` to extract the distribution as a tuple of counts and their frequncies. `PidFeatures` can be subset based on some sub-population of person ids to get more refined distributions. But more on this later.
 
@@ -169,10 +154,7 @@ print(sequence_lengths(Population(B)).aggregate())
 _ = plot.sequence_lengths({"A": A, "B": B})
 ```
 
-<div class="l-body">
-  {% include figure.html path="assets/img/acteval/fig3-sequence-lengths.svg"
-     caption="Example population feature distributions." %}
-</div>
+{% include figure.liquid path="assets/img/acteval/fig3-sequence-lengths.svg" caption="Example population feature distributions." %}
 
 
 We measure the distance between these two distributions using **Earth Mover's Distance** (EMD), also known as the Wasserstein distance. Informally: imagine each distribution as a pile of soil spread across a number line. The EMD is the minimum amount of work needed to rearrange one pile into the shape of the other, where work = area × distance moved.
