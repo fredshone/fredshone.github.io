@@ -58,7 +58,7 @@ plot.gantt(
 ```
 
 <div class="text-center">
-{% include figure.liquid path="assets/img/acteval/fig1-sample-gantt.svg" caption="Example activity schedule." max-width="70%" %}
+{% include figure.liquid path="assets/img/acteval/fig1-sample-gantt.svg" caption="Example activity schedule." max-width="90%" %}
 </div>
 
 Times are typically minutes from midnight but for now any consistent unit works; the library normalises internally.
@@ -79,7 +79,7 @@ plot.gantt(populations={"A": A}, act_colors=ACTS, acts=ACTS.keys())
 ```
 
 <div class="text-center">
-{% include figure.liquid path="assets/img/acteval/fig2-samples-gantt.svg" caption="Example activity schedule." max-width="70%" %}
+{% include figure.liquid path="assets/img/acteval/fig2-samples-gantt.svg" caption="Example activity schedule." max-width="90%" %}
 </div>
 
 We can think of these populations as really big complex distributions, with mixtures of discrete and continuous dimensions. Vast swathes of this theorized disribution are empty (no one *should* flip-flop hundreds of times between work and home in a day) and some are quite dense (like the classic home-work-home sequence).
@@ -154,6 +154,7 @@ B = leisure_dominant(1000)
 
 print(sequence_lengths(Population(A)).aggregate())
 # {'sequence lengths': (array([3., 4., 5.]), array([230, 395, 375]))}
+
 print(sequence_lengths(Population(B)).aggregate())
 # {'sequence lengths': (array([3., 4., 5.]), array([407, 520,  73]))}
 
@@ -204,6 +205,9 @@ mean_B = (vals_B * counts_B).sum() / counts_B.sum()
 print("Expected number of actvities per sequence:")
 print(f"  Population A: {mean_A:.2f}")
 print(f"  Population B: {mean_B:.2f}")
+# Expected number of actvities per sequence:
+#   Population A: 4.14
+#   Population B: 3.67
 ```
 
 
