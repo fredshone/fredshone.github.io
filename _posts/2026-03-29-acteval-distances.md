@@ -57,7 +57,9 @@ plot.gantt(
 )
 ```
 
+<div class="text-center">
 {% include figure.liquid path="assets/img/acteval/fig1-sample-gantt.svg" caption="Example activity schedule." max-width="70%" %}
+</div>
 
 Times are typically minutes from midnight but for now any consistent unit works; the library normalises internally.
 
@@ -76,7 +78,9 @@ plot.gantt(populations={"A": A}, act_colors=ACTS, acts=ACTS.keys())
 
 ```
 
+<div class="text-center">
 {% include figure.liquid path="assets/img/acteval/fig2-samples-gantt.svg" caption="Example activity schedule." max-width="70%" %}
+</div>
 
 We can think of these populations as really big complex distributions, with mixtures of discrete and continuous dimensions. Vast swathes of this theorized disribution are empty (no one *should* flip-flop hundreds of times between work and home in a day) and some are quite dense (like the classic home-work-home sequence).
 
@@ -131,7 +135,9 @@ _ = plot.sequence_lengths({"A": A})
 
 ```
 
+<div class="text-center">
 {% include figure.liquid path="assets/img/acteval/fig2-sequence-lengths.svg" caption="Example population feature distributions." max-width="60%" %}
+</div>
 
 Note that `sequence_lengths_per_pid` returns a `PidFeatures` object. We then use `aggregate` to extract the distribution as a tuple of counts and their frequncies. `PidFeatures` can be subset based on some sub-population of person ids to get more refined distributions. But more on this later.
 
@@ -154,7 +160,9 @@ print(sequence_lengths(Population(B)).aggregate())
 _ = plot.sequence_lengths({"A": A, "B": B})
 ```
 
+<div class="text-center">
 {% include figure.liquid path="assets/img/acteval/fig3-sequence-lengths.svg" caption="Example population feature distributions." max-width="60%" %}
+</div>
 
 
 We measure the distance between these two distributions using **Earth Mover's Distance** (EMD), also known as the Wasserstein distance. Informally: imagine each distribution as a pile of soil spread across a number line. The EMD is the minimum amount of work needed to rearrange one pile into the shape of the other, where work = area × distance moved.
