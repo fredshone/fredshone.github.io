@@ -17,31 +17,29 @@ toc:
 
 ## Acteval
 
-This is a post to introduce key features in <a href="https://github.com/fredshone/acteval">acteval</a> - a project for measuring the difference between populations of activity schedules using density estimation.
-
-Activity schedules are the things we do and when. Like leave the house at 7, work from 8.30 till 5.30, then nip to the shops for 20 minutes on the way home.
+The following is a quick primer for <a href="https://github.com/fredshone/acteval">acteval</a> - a project for measuring the difference between populations of activity schedules.
 
 A tyical use case for acteval is to check how well you modelled or synthesised schedules match some target distribution.
 
-In this post we walk through a full pipeline on a pair of constructed example populations, from raw DataFrames to domain-level rankings.
-
 ## What are activity sequences?
 
-A daily activity schedule is a sequence of non-overlapping episodes that typically span a 24-hour day. Each episode records who did it (we use person ID - `pid`), what activity they performed (`act`), and when (`start`, `end`, `duration`):
+Activity schedules are the things we do and when. Like leave the house at 7, work from 8.30 till 5.30, then nip to the shops for 20 minutes on the way home.
+
+More formally, we define an activity schedule as a sequence of non-overlapping episodes that typically span a 24-hour day. Each episode records who did it (we use person ID - `pid`), what activity they performed (`act`), and when (`start`, `end` and/or `duration`):
 
 ```python
 import pandas as pd
 from acteval.describe import plot
 
 example = pd.DataFrame([
-    {"pid": 0, "act": "home",    "start":    0, "end":  450, "duration": 450},
-    {"pid": 0, "act": "work",    "start":  450, "end":  810, "duration": 360},
-    {"pid": 0, "act": "eat_out", "start":  810, "end":  870, "duration":  60},
-    {"pid": 0, "act": "work",    "start":  870, "end": 1080, "duration": 210},
-    {"pid": 0, "act": "home",    "start": 1080, "end": 1440, "duration": 360},
+    {"pid": 0, "act": "home",    "start":    0, "end":  450},
+    {"pid": 0, "act": "work",    "start":  450, "end":  810},
+    {"pid": 0, "act": "eat_out", "start":  810, "end":  870},
+    {"pid": 0, "act": "work",    "start":  870, "end": 1080},
+    {"pid": 0, "act": "home",    "start": 1080, "end": 1440},
 ])
 
-ACTS = {
+ACTS = {  # activity type to colour mapping
     "home": "#5b8dd9",
     "work": "#d95b5b",
     "eat_out": "#e8a838",
@@ -58,14 +56,14 @@ plot.gantt(
 ```
 
 <div class="text-center">
-{% include figure.liquid path="assets/img/acteval/fig1-sample-gantt.svg" caption="Example activity schedule." max-width="90%" %}
+{% include figure.liquid path="assets/img/acteval/fig1-gantt.svg" caption="Example activity schedule." max-width="90%" %}
 </div>
 
-Times are typically minutes from midnight but for now any consistent unit works; the library normalises internally.
+Start and end times are typically minutes from midnight but for now any consistent unit works; the library normalises internally.
 
 ## What sort of distances?
 
-On it's own a schedule is a complex object. As a though experiment we can image representing a schedule as 1440 activity choices (each representing a minute of the day). If we were to represent a schedule with just two possible activity types (say `home` and `work`) then there are $2^{1440}$ possible schedules. A population is then comprised of potentially millions of person's schedules.
+On it's own a schedule is a complex object. As a thought experiment we can image representing a schedule as 1440 activity choices (each representing a minute of the day). If we were to represent a schedule with just two possible activity types (say `home` and `work`) then there are $2^{1440}$ possible schedules. A population is then comprised of potentially millions of person's schedules.
 
 ```python
 import pandas as pd
@@ -79,7 +77,7 @@ plot.gantt(populations={"A": A}, act_colors=ACTS, acts=ACTS.keys())
 ```
 
 <div class="text-center">
-{% include figure.liquid path="assets/img/acteval/fig2-samples-gantt.svg" caption="Example activity schedule." max-width="90%" %}
+{% include figure.liquid path="assets/img/acteval/fig2-gantt.svg" caption="Example activity schedule." max-width="90%" %}
 </div>
 
 We can think of these populations as really big complex distributions, with mixtures of discrete and continuous dimensions. Vast swathes of this theorized disribution are empty (no one *should* flip-flop hundreds of times between work and home in a day) and some are quite dense (like the classic home-work-home sequence).
@@ -96,7 +94,7 @@ We tend to refer to these as population features, rather than marginal distribut
 
 ## Features
 
-We expose population features as pre-computed numpy arrays via the `eval.Population` class:
+We expose population features as pre-computed numpy arrays via the `eval.Population` class. For example, we can take a look at the number of times each activiy type occurs in each schedule:
 
 ```python
 from acteval import Population
@@ -120,7 +118,7 @@ print(A.int_to_act)
 
 ## Feature distributions
 
-These features form distributions. Such as the numbers of activities in each plan:
+For a sample or population of activity schedules, these features form distributions. For the following we will consider a nice simple feature and it's distribution, the number of activities in each plan (i.e. it's length):
 
 ```python
 from acteval.features.participation import sequence_lengths
@@ -136,7 +134,7 @@ _ = plot.sequence_lengths({"A": A})
 ```
 
 <div class="text-center">
-{% include figure.liquid path="assets/img/acteval/fig2-sequence-lengths.svg" caption="Example population feature distributions." max-width="60%" %}
+{% include figure.liquid path="assets/img/acteval/fig3-lengths.svg" caption="Example population feature distributions." max-width="50%" %}
 </div>
 
 Note that `sequence_lengths_per_pid` returns a `PidFeatures` object. We then use `aggregate` to extract the distribution as a tuple of counts and their frequncies. `PidFeatures` can be subset based on some sub-population of person ids to get more refined distributions. But more on this later.
@@ -162,7 +160,7 @@ _ = plot.sequence_lengths({"A": A, "B": B})
 ```
 
 <div class="text-center">
-{% include figure.liquid path="assets/img/acteval/fig3-sequence-lengths.svg" caption="Example population feature distributions." max-width="60%" %}
+{% include figure.liquid path="assets/img/acteval/fig4-lengths.svg" caption="Example population feature distributions." max-width="50%" %}
 </div>
 
 
@@ -215,12 +213,13 @@ In practice, `acteval` represents distributions as weighted histograms — `(val
 
 ---
 
-Note that we are measuring the distance between populations of schedules. Compared population don't need to be comprised of the same persons or be the same size. Comparison is not therefore pairwise. individual schedules, is being added to acteval (see the pair-wise module).
+Note that we are measuring the distance between populations of schedules. Compared population don't need to be comprised of the same persons or be the same size. Comparison is not therefore pairwise.
 
 
 ## Bringing it all togther
 
-The `sequence_length` feature is a useful comparison, but obviously there's a lot more going on in activity schedules. The `acteval` strategy is to simply consider loads and loads of features.
+The `sequence_length` feature is a useful comparison, but obviously there's a lot more going on in activity schedules than their lengths. The `acteval` strategy is to simply consider and measure the difference between loads and loads of features.
+
 
 For example, we consider the number of times each activity type occurs (`participation rates`), the number of times each transition from one activity type to another occurs (`2-grams`), the durations of each activity type (`durations`), and so on. The full catelogue, and which of these are used in the default evaluation configuration are available from `acteval.features.catalogue`:
 
@@ -250,13 +249,15 @@ print(catalogue.list_features().to_markdown())
 | 15 | transitions    | 4-gram                  | 4-gram             | Consecutive activity quad (4-gram) counts per person.                                  | True                |
 | 16 | transitions    | full sequences          | full_sequences     | Per-person indicator for each unique full abbreviated tour string (e.g. 'h>w>h').      | False               |
 
-...Which is a lot, so to be more useful for quick comparisons, we encourage aggregations to **group** and **domain** levels. The highest level, **domain**, consists of the following:
+...Which is a lot, so to be more useful for quick comparisons, we support aggregations to **group** and **domain** levels. The highest level, **domain**, consists of the following:
 
-- **participations**: people taking part in activities
-- **transitions**: people moving between activities
-- **timing**: when and for how long people do things
+- **participations**: the taking part in activities
+- **transitions**: the moving between activities
+- **timing**: when and for how long activities occur
 
-The `acteval.Evaluator` orchestrated all these comparisons in an efficient way. It also looks after descriptive metrics and non-density estimation features, such as for measuring correctness and creativity.
+Domain-level results provide high level evaluation of populations and expose key trade-offs. Perhaps one model is better at participations, and the other at timing, for example. Additionally, the domains have somewhat different units (participation rates, transition reates and time (in days)) so we don't aggrgeate further, although you certainly can.
+
+The `acteval.Evaluator` orchestrates all these comparisons, against a target population of schedules, in an efficient way. It also looks after descriptive metrics and non-density estimation features, such as for measuring feasibility and creativity. More on these in the future.
 
 ```python
 from acteval import Evaluator
