@@ -60,13 +60,13 @@ Consider human activity scheduling - the choice of what activities to participat
  
 Real world activity scheduling is complex. Schedules are the result of a combination of physical constraints like time and space, preferences such as if to work late or visit a friend, and interactions with the world, such as sharing a vehicle or meeting congestion.
 
-## The classic compositional approach
-
-<div class="text-center">
-{% include figure.liquid path="assets/img/mw2026/compositional.png" caption="Compositional model" max-width="75%" %}
-</div>
+## Scheduling model 1/3 - the classic compositional approach
  
 Current approaches to scheduling are complex. Approaches within activity-based models also vary, there are basically as many approaches to scheduling as there are activity-based models.
+
+<div class="text-center">
+{% include figure.liquid path="assets/img/mw2026/compositional.png" caption="Activity scheduing with a compositional model" max-width="75%" %}
+</div>
  
 I have first hand experience, from building my [own](https://github.com/fredshone/composhed). It strings together multiple model components, some are discrete choices, such as daily activity patterns or tour and sub-tour types, others are continuous variable choices, such as durations. All these choices are then assembled together into cohesive schedules using some logic or other.
  
@@ -83,30 +83,32 @@ Again, given sufficient time these models will do a pretty good job at predictin
 Realism: B-
  
  
-## ML for flexibility and simplicity
+## Scheduling model 2/3 - an ML approach
  
 Much is made of the learning capacity of ML - it's ability to form and use complex features. But this capacity extends to a capacity for complexity of model inputs and outputs. Specifically, ML enables architectures that can injest and excrete complex structured data, including human activity schedules.
  
-I built a model to do this called ActVAE. It lives [here](https://github.com/big-ucl/caveat). It's a deep generative model, specifically a Variational Auto-Encoder with a Conditional Prior. But this isn't immediately important.
+I built a model to do this called ActVAE. It lives [here](https://github.com/big-ucl/caveat). It's a deep generative model, specifically a Variational Auto-Encoder with a Conditional Prior. But the details are not immediately important.
 
 <div class="text-center">
-{% include figure.liquid path="assets/img/mw2026/actvae.png" caption="ActVAE model" max-width="75%" %}
+{% include figure.liquid path="assets/img/mw2026/actvae.png" caption="Activity scheduing with ML (ActVAE)" max-width="75%" %}
 </div>
  
-This is fast because we can train a single model to replace the complex compositions of sub-models. This model can be calibrated and trained quickly end-to-end, and can generate schedules 100s of times faster. It also turns out that the schedules, specifically the distributions of schedules, that these models output are as or more realistic. This is primarily because people are complex and varied and so are their schedules. Released from the heuristics and simplifications of sub-models, deep ML approaches can capture this complexity and variance better.
+This is fast because we can train a single model to replace the complex compositions of sub-models. This model can be calibrated and trained quickly end-to-end, and can generate schedules 100s of times faster. It also turns out that the schedules, specifically the distributions of schedules, that these models output are as, or more realistic. This is primarily because people are complex and varied and so are their schedules. Released from the heuristics and simplifications of sub-models, deep ML approaches can capture this complexity and variance better.
  
 But this all comes with a severe loss of controllability. The model is a black box. If it doesn't do what you want, you have to deal with this outside the model.
  
 Speed/cost: A
+
 Realism: B+
+
 Controllability: F
  
-## A logical extreme
+## Scheduling model 3/3 - a large language model
  
 We can take the pro-ML ethos to it's logical extreme and spin up an LLM. This has the advantage of leveraging a great deal of observed human behaviour. A lot of this observed behaviour is tangential, people arguing on Reddit for example, but some of it will be relevant. We can also fine tune them for our task and benefit from their ability to understand and follow instructions.
 
 <div class="text-center">
-{% include figure.liquid path="assets/img/mw2026/actllm.png" caption="ActLLM model" max-width="75%" %}
+{% include figure.liquid path="assets/img/mw2026/actllm.png" caption="Activity scheduing with an LLM" max-width="75%" %}
 </div>
  
 I have code for testing such models [here](https://github.com/fredshone/actllm).
@@ -114,7 +116,9 @@ I have code for testing such models [here](https://github.com/fredshone/actllm).
 Bad news is that this is slow and costly and inefficient and that realism plummets. Good news is that the models are very easily controllable using natural language instructions. Annoying statements like "You are an expert transport planner" appear to actually work. But you can also give LLMs more concrete instructions, like; "make sure all schedules start and end at home".
  
 Speed/cost: F
+
 Realism: F
+
 Controllability: B
 
 ## Receipts
@@ -122,7 +126,7 @@ Controllability: B
 These scores are not speculation. I have done the experiments. ActVAE is clearly fast and LLMs are slow. ActVAE surprisingly does rather well at density estimation (measuring this is a whole other [thing](https://fredshone.github.io/blog/2026/acteval-distances/)), and only lags marginally behind the other models in controllability.
 
 <div class="text-center">
-{% include figure.liquid path="assets/img/mw2026/tab1.png" caption="Evaluation" max-width="90%" %}
+{% include figure.liquid path="assets/img/mw2026/tab1.png" caption="Evaluation results" max-width="90%" %}
 </div>
 
 ## Why does the ML approach do realism well?
@@ -142,7 +146,7 @@ Ultimately we want models that can output correct distributions of schedules. Bu
 Intra-schedule variation considers the construction of individual schedules and how realistic they are. In the image generation domain, this is commonly referred to as sample quality and is sometimes as simple as checking that images of hands have the correct number of fingers or that shadows are correctly placed. For schedules this might be some structural requirement, like all schedules start and end at home.
 
 <div class="text-center">
-{% include figure.liquid path="assets/img/mw2026/fig3.png" caption="Inter-intra variation" max-width="90%" %}
+{% include figure.liquid path="assets/img/mw2026/fig3.png" caption="Illustration of inter-intra variation" max-width="90%" %}
 </div>
  
 Inter-schedule distribution includes the aggregate distribution of activity participations and start times across the whole population. When do people typically travel and why for example.
@@ -168,4 +172,4 @@ Don't trust LLMs to behave like humans.
  
 Back to our original question. Are people noisy baby-like choice makers? Or are they careful logical robotic optimisers?
  
-I argue more for the former. Although in the long term (think billions of years) we are definitely optimised and have gained the capacity to optimise. These hard-bred behaviours did not have navigating the complexities of the London Underground in scope. Falling back on a black-box approach to behaviour modelling is perhaps lazy but also maybe more realistic and in complex cases, like activity-based modelling, pragmatic.
+I argue more for the former. If we're optimised for anything - it's ascending from the primordial soup - not navigating the London Underground or getting to the dentist on time. Falling back on a black-box approach to behaviour modelling is perhaps lazy but also pragmatic, and in some cases, like activity scheduling, potentially more realistic.
